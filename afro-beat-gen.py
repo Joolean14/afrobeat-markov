@@ -11,10 +11,45 @@ def read_bass_xmls():
         bass_groove_streams.append(converter.parse(dir + bass_file_names[i]))
 
 
-    print(bass_groove_streams)
+    # print(bass_groove_streams)
+    # bass_groove_streams[0].show()
     return bass_groove_streams
 
-read_bass_xmls()
+# read_bass_xmls()
+
+# dorian = scale.DorianScale(pitch.Pitch('d'))
+# print(dorian.pitches)
+
+
+
+
+
+e_flat_minor = scale.MinorScale('e-')
+# print(e_flat_minor.pitches)
+
+coffin = converter.parse('bass-xml/coffin-for-head-of-state-Bass_Guitar.xml')
+# print(coffin.analyze('key'))
+
+coffin_flat = coffin.flat.getElementsByClass(["Note"])
+
+# Get the second note (index 1) from the elements list
+second_note = coffin_flat[2]
+
+# Print the second note
+print(second_note)
+
+
+# print(coffin[0].pitch)
+
+
+scale_degrees = []
+
+for n in coffin.recurse():
+    pitch_class = coffin[n].pitch.name
+    degree = e_flat_minor.getScaleDegreeFromPitch(pitch_class)
+    scale_degrees.append(degree)
+
+print(scale_degrees)
 
 
 
@@ -42,12 +77,6 @@ read_bass_xmls()
 
 ## Stochastic weights
 
-# asiko = converter.parse('asiko-revisited.xml')
-
-
-# asiko.show()
-
-# print(asiko.analyze('key'))
 
 # asiko.measures(1,8).show()
 
